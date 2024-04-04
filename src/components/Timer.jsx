@@ -19,6 +19,7 @@ function Timer() {
           playDefaultNotificationSound();
         } else {
           setTime((prevTime) => prevTime - 1);
+          document.title = formatTimeToTitle(time);
         }
       }, 1000);
     }
@@ -39,6 +40,7 @@ function Timer() {
     setIsActive(false);
     setIsPaused(false);
     setTime(25 * 60); // Reset timer duration to default (25 minutes)
+    document.title = "Pomodoro Timer"; // Reset title
   };
 
   const playDefaultNotificationSound = () => {
@@ -61,6 +63,11 @@ function Timer() {
   const handleStartLongBreak = (time) => {
     setTime(time * 60); // Set timer duration to long break time
     startTimer(); // Start the timer
+  };
+
+  const formatTimeToTitle = (timeInSeconds) => {
+    const formattedTime = moment.utc(timeInSeconds * 1000).format('mm:ss');
+    return `(${formattedTime}) Pomodoro Timer`;
   };
 
   const formattedTime = moment.utc(time * 1000).format('mm:ss');
