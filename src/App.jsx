@@ -6,12 +6,18 @@ import SessionCounter from '../src/components/SessionCounter';
 
 const App = () => {
   return (
-    <div className="App">
-      {/* <SessionCounter /> */}
-      <Timer/>
-      
-      <Tasks />
-     
+
+    <div className='flex'>
+      <div className="w-1/4 p-4">
+          <SessionCounter />
+        </div>
+      <div className="App">
+        
+        <Timer />
+
+        <Tasks />
+        
+      </div>
     </div>
   );
 };
