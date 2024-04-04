@@ -66,17 +66,20 @@ function Timer() {
   const formattedTime = moment.utc(time * 1000).format('mm:ss');
 
   return (
-    <div>
-      <h2 className="text-2xl mt-2">{formattedTime}</h2>
-      <ProgressBar totalTime={25 * 60} currentTime={time} />
-      <button className="timer-button" onClick={startTimer}>
-        {isActive && !isPaused ? 'Pause' : 'Start'}
-      </button>
-      {!isActive && (
-        <button className="timer-button" onClick={resetTimer}>
-          Reset
+    <div className="container mx-auto mt-8 p-4 rounded-lg shadow-md bg-white">
+      <h2 className="text-3xl font-semibold text-center mb-4">Pomodoro Timer</h2>
+      <div className="flex justify-center items-center mb-4">
+        <h3 className="text-4xl font-bold mr-2">{formattedTime}</h3>
+        <button className={`timer-button ${isActive && !isPaused ? 'bg-red-500' : 'bg-green-500'}`} onClick={isActive && !isPaused ? pauseTimer : startTimer}>
+          {isActive && !isPaused ? 'Pause' : 'Start'}
         </button>
-      )}
+        {!isActive && (
+          <button className="timer-button bg-gray-500 ml-2" onClick={resetTimer}>
+            Reset
+          </button>
+        )}
+      </div>
+      <ProgressBar totalTime={25 * 60} currentTime={time} />
       <BreakSettings onStartShortBreak={handleStartShortBreak} onStartLongBreak={handleStartLongBreak} />
     </div>
   );

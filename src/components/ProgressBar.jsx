@@ -26,18 +26,19 @@ const ProgressBar = ({ totalTime, currentTime }) => {
   }, [totalTime]);
 
   return (
-    <div style={{ width: '100px', height: '100px' }}>
-      <CircularProgressbar
-        className='lg:ml-40 mt-6 ml-24'
-        value={progress}
-        text={`${Math.round(progress)}%`}
-        strokeWidth={10}
-        styles={{
-          root: { width: '100%', height: '100%' },
-          path: { stroke: '#3b82f6' }, // Adjust color as needed
-          text: { fill: '#3b82f6', fontSize: '20px' }, // Adjust color and font size as needed
-        }}
-      />
+    <div className="flex justify-center items-center h-full">
+      <div style={{ width: '100px', height: '100px' }}>
+        <CircularProgressbar
+          value={progress}
+          text={`${Math.round(progress)}%`}
+          strokeWidth={10}
+          styles={{
+            root: { width: '100%', height: '100%' },
+            path: { stroke: '#3b82f6' }, // Adjust color as needed
+            text: { fill: '#3b82f6', fontSize: '20px' }, // Adjust color and font size as needed
+          }}
+        />
+      </div>
     </div>
   );
 };

@@ -16,36 +16,55 @@ function BreakSettings({ onStartShortBreak, onStartLongBreak }) {
   };
 
   return (
-    <div className="mt-4">
-      <div className="flex mt-2">
-        <label className="lg:mr-2 lg:mt-2 mt-8 mr-2">Short Break:</label>
-        <input
-          type="number"
-          min="1"
-          value={shortBreakTime}
-          onChange={handleShortBreakChange}
-          className="lg:w-16 h-10 lg:mt-0 mt-6 w-8 border border-gray-300 rounded px-2 py-1 "
-        />
-        <span className="lg:ml-1 lg:mt-2 mt-8 ml-2">minutes</span>
-        <button className="bg-green-600 text-white rounded-xl lg:px-4 lg:py-2 px-4 cursor-pointer hover:bg-green-500 lg:ml-4 ml-6" onClick={() => onStartShortBreak(shortBreakTime)}>
-          <span className="hidden sm:inline">Start Short Break</span> {/* Text shown on larger screens */}
-          <FaPlay className="sm:hidden ml-2" onClick={() => onStartShortBreak(shortBreakTime)} /> {/* Play icon shown on smaller screens */}
+    <div className="mt-4 bg-white rounded-lg p-6 shadow-md border-2 border-green-500">
+      
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col">
+          <label className="text-lg font-semibold mb-1 text-green-500">Short Break</label>
+          <div className="flex items-center">
+            <input
+              type="number"
+              min="1"
+              value={shortBreakTime}
+              onChange={handleShortBreakChange}
+              className="w-20 border border-gray-300 rounded-md px-3 py-2 text-lg focus:outline-none mr-2 bg-gray-100"
+            />
+            <span className="text-gray-600">minutes</span>
+          </div>
+        </div>
+        <button
+          className="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-green-600 focus:outline-none shadow-md"
+          onClick={() => onStartShortBreak(shortBreakTime)}
+        >
+          <FaPlay className="text-2xl" />
         </button>
       </div>
-      <div className="flex ml-[4px] mt-6">
-        <label className="lg:mr-2 lg:mt-2 mt-8 mr-2">Long Break:</label>
-        <input
-          type="number"
-          min="1"
-          value={longBreakTime}
-          onChange={handleLongBreakChange}
-          className="lg:w-16 h-10 lg:mt-0 mt-6 w-8 border border-gray-300 rounded px-2 py-1"
-        />
-        <span className="lg:ml-1 lg:mt-2 mt-8 ml-2">minutes</span>
-        <button className="bg-green-600 text-white rounded-xl lg:px-4 lg:py-2 px-4 cursor-pointer hover:bg-green-500 lg:ml-4 ml-6" onClick={() => onStartLongBreak(longBreakTime)}>
-          <span className="hidden sm:inline">Start Long Break</span> {/* Text shown on larger screens */}
-          <FaPlay className="sm:hidden ml-2" onClick={() => onStartLongBreak(longBreakTime)} /> {/* Play icon shown on smaller screens */}
+
+      <div className="flex items-center justify-between mt-4">
+        <div className="flex flex-col">
+          <label className="text-lg font-semibold mb-1 text-green-500">Long Break</label>
+          <div className="flex items-center">
+            <input
+              type="number"
+              min="1"
+              value={longBreakTime}
+              onChange={handleLongBreakChange}
+              className="w-20 border border-gray-300 rounded-md px-3 py-2 text-lg focus:outline-none mr-2 bg-gray-100"
+            />
+            <span className="text-gray-600">minutes</span>
+          </div>
+        </div>
+        <button
+          className="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-green-600 focus:outline-none shadow-md"
+          onClick={() => onStartLongBreak(longBreakTime)}
+        >
+          <FaPlay className="text-2xl" />
         </button>
+      </div>
+
+     
+      <div className="flex justify-center mt-6">
+        <div className="w-20 h-2 bg-green-500"></div>
       </div>
     </div>
   );

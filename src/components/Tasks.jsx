@@ -35,33 +35,46 @@ function Tasks() {
   };
 
   return (
-    <div className="mt-10">
-      <h3 className='text-xl mr-16'>Tasks</h3>
-      <div className="flex items-center">
+    <div className="mt-10 bg-white p-6 rounded-lg shadow-md">
+      <h3 className="text-2xl font-bold mb-4">Tasks</h3>
+      <div className="flex items-center mb-4">
         <input
-          className="lg:w-[300px] lg:mr-4 mr-4 lg:mt-4 mt-4 lg:ml-0   p-[8px] border-2 border-solid rounded-xl"
+          className="flex-grow mr-4 px-4 py-2 border-2 border-solid rounded-lg focus:outline-none focus:border-green-500"
           type="text"
+          placeholder="Add a new task..."
           value={note}
           onChange={handleNoteChange}
           onKeyDown={handleKeyDown}
         />
-        <button className="bg-green-600 text-white rounded-xl lg:px-4 lg:mt-4 mt-4 cursor-pointer hover:bg-green-500">
-          <span className="hidden sm:inline">Add</span> {/* Text shown on larger screens */}
-          <FaPlus className="sm:hidden" /> {/* Plus icon shown on smaller screens */}
+        <button
+          className="bg-green-600 text-white rounded-lg px-4 py-2 hover:bg-green-500 transition-colors duration-300"
+          onClick={addNote}
+        >
+          <span className="hidden md:inline">Add</span> {/* Text shown on larger screens */}
+          <FaPlus className="md:hidden" /> {/* Plus icon shown on smaller screens */}
         </button>
       </div>
-      <ul className="flex flex-col justify-start list-none pt-4">
+      <ul className="list-none">
         {notes.map((note, index) => (
-          <li key={index} className={`flex items-center ${note.completed ? 'line-through' : ''} ${index > 0 ? 'mt-2' : ''}`}>
+          <li
+            key={index}
+            className={`flex items-center py-2 border-b border-gray-300 ${
+              note.completed ? 'text-gray-400 line-through' : ''
+            } transition-colors duration-300`}
+          >
             <span className="flex-grow">{note.content}</span>
-            <button className="bg-transparent border-none text-blue-500 cursor-pointer" onClick={() => toggleNote(index)}>
-              {note.completed ? (
-                <FaCheck />
-              ) : (
-                <FaCheck style={{ color: 'green' }} />
-              )}
+            <button
+              className={`text-green-500 hover:text-green-600 focus:outline-none ${
+                note.completed ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+              onClick={() => toggleNote(index)}
+            >
+              <FaCheck />
             </button>
-            <button className="bg-transparent border-none text-blue-500 cursor-pointer" onClick={() => deleteNote(index)}>
+            <button
+              className="text-red-500 hover:text-red-600 ml-4 focus:outline-none"
+              onClick={() => deleteNote(index)}
+            >
               <FaTrash />
             </button>
           </li>
@@ -69,6 +82,6 @@ function Tasks() {
       </ul>
     </div>
   );
-};
+}
 
 export default Tasks;
