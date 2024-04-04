@@ -6,9 +6,13 @@
   font-family: "Poppins";
 }
 
-body{
+html, body {
   background-color: rgb(135, 103, 208);
+  min-height: 100vh; 
+  margin: 0; 
+  padding: 0; 
 }
+
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
